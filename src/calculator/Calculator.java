@@ -16,11 +16,7 @@ public class Calculator {
                 operation.result = operation.num1 / operation.num2;
                 return operation;
         }
-        switch (operation.continuation) {
-            case "No":
-                return operation;
-            case "Yes":
-                break;
+        return operation;
         }
     }
-}
+
