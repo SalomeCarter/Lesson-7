@@ -1,10 +1,10 @@
 package calculator;
 
 public class ConsoleApplication implements Application {
-    OperationStorage storage = new InMemoryOperationStorage();
-    Calculator calculator = new Calculator();
-    Reader reader = new ConsoleReader();
-    Writer writer = new ConsoleWriter();
+    private OperationStorage storage = new InMemoryOperationStorage();
+    private Calculator calculator = new Calculator();
+    private Reader reader = new ConsoleReader();
+    private Writer writer = new ConsoleWriter();
 
     public void run() {
         boolean continuation = true;
@@ -18,7 +18,7 @@ public class ConsoleApplication implements Application {
             Operation op = new Operation(num1, num2, type);
             Operation result = calculator.calculate(op);
             storage.save(result);
-            writer.write("Result = " + result.result);
+            writer.write("Result = " + result.getResult());
 
             writer.write("");
 
@@ -26,6 +26,11 @@ public class ConsoleApplication implements Application {
             String response = reader.readString();
             switch (response) {
                 case "yes": {
+                    Operation[] all = storage.findAll();
+                    for (Operation operation : all) {
+                        if(operation != null)
+                        writer.write("Result = " + operation.getResult());
+                    }
                     writer.write("Ok, let`s continue");
                     break;
                 }
@@ -38,7 +43,6 @@ public class ConsoleApplication implements Application {
                     continuation = false;
                 }
             }
-            Operation[] all = storage.findAll();
         }
     }
 }
