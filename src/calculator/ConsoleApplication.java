@@ -14,7 +14,7 @@ public class ConsoleApplication implements Application {
             writer.write("Enter number 2");
             double num2 = reader.readDouble();
             writer.write("Enter operation type. Sum, sub, mul or div?");
-            String type = reader.readString();
+            OperationType type = reader.readOperationType();
             Operation op = new Operation(num1, num2, type);
             Operation result = calculator.calculate(op);
             storage.save(result);
@@ -23,9 +23,9 @@ public class ConsoleApplication implements Application {
             writer.write("");
 
             writer.write("Would you like to continue? yes OR no?");
-            String response = reader.readString();
+            ResponseType response = reader.readResponseType();
             switch (response) {
-                case "yes": {
+                case YES: {
                     Operation[] all = storage.findAll();
                     for (Operation operation : all) {
                         if(operation != null)
@@ -34,7 +34,7 @@ public class ConsoleApplication implements Application {
                     writer.write("Ok, let`s continue");
                     break;
                 }
-                case "no": {
+                case NO: {
                     writer.write(" ");
                     continuation = false;
                     break;

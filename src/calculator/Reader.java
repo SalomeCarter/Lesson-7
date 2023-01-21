@@ -1,6 +1,7 @@
 package calculator;
 
 public interface Reader {
-    String readString();
+    ResponseType readResponseType();
+    OperationType readOperationType();
     double readDouble();
 }
