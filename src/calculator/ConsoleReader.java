@@ -11,12 +11,16 @@ public class ConsoleReader implements Reader {
 
     @Override
     public ResponseType readResponseType() {
-        return null;
+        String next = scanner.next();
+        String s = next.toUpperCase();
+        return ResponseType.valueOf(s);
     }
 
     @Override
     public OperationType readOperationType() {
-        return null;
+        String next = scanner.next();
+        String s = next.toUpperCase();
+        return OperationType.valueOf(s);
     }
 
     public double readDouble() {
