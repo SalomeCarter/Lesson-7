@@ -14,12 +14,16 @@ public class ConsoleApplication implements Application {
             writer.write("Enter number 2");
             double num2 = reader.readDouble();
             writer.write("Enter operation type. Sum, sub, mul or div?");
-            OperationType type = reader.readOperationType();
             Operation op = new Operation(num1, num2, type);
+            try {
+                OperationType type = reader.readOperationType();
+            } catch (OperationNotFoundException e) {
+                writer.write("Operation not found!");
+            }
+
             Operation result = calculator.calculate(op);
             storage.save(result);
             writer.write("Result = " + result.getResult());
-
             writer.write("");
 
             writer.write("Would you like to continue? yes OR no?");
@@ -43,6 +47,11 @@ public class ConsoleApplication implements Application {
                     continuation = false;
                 }
             }
+        }
+        try {
+            OperationType operationType = reader.readOperationType();
+        } catch (OperationNotFoundException e) {
+            writer.write("Operation not found!");
         }
     }
 }
