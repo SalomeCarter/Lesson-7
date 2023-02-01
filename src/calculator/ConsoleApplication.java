@@ -1,10 +1,10 @@
 package calculator;
 
 public class ConsoleApplication implements Application {
-    private OperationStorage storage = new InMemoryOperationStorage();
-    private Calculator calculator = new Calculator();
-    private Reader reader = new ConsoleReader();
-    private Writer writer = new ConsoleWriter();
+    private final OperationStorage storage = new InMemoryOperationStorage();
+    private final Calculator calculator = new Calculator();
+    private final Reader reader = new ConsoleReader();
+    private final Writer writer = new ConsoleWriter();
 
     public void run() {
         boolean continuation = true;
@@ -13,12 +13,17 @@ public class ConsoleApplication implements Application {
             double num1 = reader.readDouble();
             writer.write("Enter number 2");
             double num2 = reader.readDouble();
+
             writer.write("Enter operation type. Sum, sub, mul or div?");
-            Operation op = new Operation(num1, num2, type);
+
+            Operation op;
+
             try {
                 OperationType type = reader.readOperationType();
+                op = new Operation(num1, num1, type);
             } catch (OperationNotFoundException e) {
                 writer.write("Operation not found!");
+                continue;
             }
 
             Operation result = calculator.calculate(op);
