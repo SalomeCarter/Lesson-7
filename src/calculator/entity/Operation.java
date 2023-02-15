@@ -1,4 +1,4 @@
-package calculator;
+package calculator.entity;
 
 public class Operation {
     double num1;

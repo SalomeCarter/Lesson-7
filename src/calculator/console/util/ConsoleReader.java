@@ -1,4 +1,9 @@
-package calculator;
+package calculator.console.util;
+
+import calculator.OperationNotFoundException;
+import calculator.OperationType;
+import calculator.util.Reader;
+import calculator.ResponseType;
 
 import java.util.Scanner;
 

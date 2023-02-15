@@ -1,4 +1,13 @@
-package calculator;
+package calculator.console;
+import calculator.*;
+import calculator.entity.Operation;
+import calculator.console.util.ConsoleReader;
+import calculator.console.util.ConsoleWriter;
+import calculator.service.Calculator;
+import calculator.storage.InMemoryOperationStorage;
+import calculator.storage.OperationStorage;
+import calculator.util.Reader;
+import calculator.util.Writer;
 
 public class ConsoleApplication implements Application {
     private final OperationStorage storage = new InMemoryOperationStorage();

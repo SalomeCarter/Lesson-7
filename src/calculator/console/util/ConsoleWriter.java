@@ -1,4 +1,6 @@
-package calculator;
+package calculator.console.util;
+
+import calculator.util.Writer;
 
 public class ConsoleWriter implements Writer {
 

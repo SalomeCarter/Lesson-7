@@ -1,4 +1,6 @@
-package calculator;
+package calculator.service;
+
+import calculator.entity.Operation;
 
 public class Calculator {
     Operation calculate(Operation operation) {

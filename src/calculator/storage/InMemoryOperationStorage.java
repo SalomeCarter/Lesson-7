@@ -1,4 +1,6 @@
-package calculator;
+package calculator.storage;
+
+import calculator.entity.Operation;
 
 public class InMemoryOperationStorage implements OperationStorage {
 
